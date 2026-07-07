@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Home and Vehicle Rental in Dallas Fort Worth and Los Angeles | RentRyte</title>
+<meta name="description" content="Explore our fleet of vehicles and homes for rent in the Dallas Fort Worth and Greater Los Angeles areas.">
+<style>
+  :root{
+    --navy:#1F3864; --orange:#C55A11; --ink:#1d1e20; --gray:#5c6270;
+    --bg:#ffffff; --soft:#f4f6fa; --line:#e4e8ef;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.6}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px}
+
+  header{position:sticky;top:0;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);z-index:10}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;letter-spacing:.5px}
+  .brand .rent{color:var(--navy)} .brand .ryte{color:var(--orange)}
+  .nav nav a{margin-left:28px;font-weight:600;color:var(--gray);font-size:15px}
+  .nav nav a:hover{color:var(--navy)}
+
+  .hero{position:relative;color:#fff;text-align:center;padding:110px 24px 120px;background:
+    linear-gradient(rgba(18,30,54,.72),rgba(18,30,54,.72)),url("assets/hero.jpg") center 60%/cover no-repeat}
+  .hero img.logo{width:190px;margin:0 auto 26px;filter:invert(1) drop-shadow(0 2px 8px rgba(0,0,0,.35))}
+  .hero h1{font-size:clamp(30px,5vw,52px);font-weight:800;letter-spacing:-.5px}
+  .hero p{margin-top:14px;font-size:19px;opacity:.92}
+  .hero .cta{display:inline-block;margin:34px 8px 0;padding:14px 30px;border-radius:8px;font-weight:700;font-size:16px}
+  .cta.primary{background:var(--orange);color:#fff}
+  .cta.primary:hover{background:#a94c0d}
+  .cta.ghost{border:2px solid #fff;color:#fff}
+  .cta.ghost:hover{background:#fff;color:var(--navy)}
+
+  section{padding:80px 0}
+  section.alt{background:var(--soft)}
+  .kicker{color:var(--orange);font-weight:700;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+  h2{font-size:clamp(26px,3.5vw,36px);color:var(--navy);margin:6px 0 8px;letter-spacing:-.3px}
+  .sub{color:var(--gray);max-width:640px;margin-bottom:42px}
+
+  .grid{display:grid;gap:26px}
+  .grid.cars{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .18s,box-shadow .18s;display:flex;flex-direction:column}
+  .card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(31,56,100,.14)}
+  .card .ph{height:220px;overflow:hidden}
+  .card .ph img{width:100%;height:100%;object-fit:cover}
+  .card .body{padding:18px 20px 22px;display:flex;flex-direction:column;flex:1}
+  .card h3{font-size:18px;color:var(--navy)}
+  .card .spec{color:var(--gray);font-size:14px;margin:4px 0 14px}
+  .card .link{margin-top:auto;font-weight:700;color:var(--orange);font-size:15px}
+  .card .link:hover{text-decoration:underline}
+
+  .rooms{display:grid;grid-template-columns:380px 1fr;gap:34px;align-items:start}
+  .rooms .photo{border-radius:14px;overflow:hidden;max-height:520px}
+  .rooms .photo img{width:100%;height:100%;object-fit:cover}
+  .roomlist{display:grid;gap:16px}
+  .room{background:#fff;border:1px solid var(--line);border-left:4px solid var(--orange);border-radius:10px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+  .room h3{font-size:17px;color:var(--navy)}
+  .room p{color:var(--gray);font-size:14px}
+  .room .link{font-weight:700;color:var(--orange);white-space:nowrap}
+  .room .link:hover{text-decoration:underline}
+
+  .quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px}
+  .quote{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px}
+  .stars{color:#f5a623;font-size:18px;letter-spacing:3px}
+  .quote p{margin:12px 0 16px;font-size:16px}
+  .quote .who{font-weight:700;color:var(--navy);font-size:14px}
+  .quote .where{color:var(--gray);font-size:13px}
+
+  .contact{background:var(--navy);color:#fff;text-align:center}
+  .contact h2{color:#fff}
+  .contact .items{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;margin-top:30px;font-size:17px}
+  .contact .items a{color:#fff;font-weight:600;border-bottom:1px solid rgba(255,255,255,.4)}
+  .contact .items a:hover{border-color:#fff}
+  .contact .label{display:block;font-size:12px;text-transform:uppercase;letter-spacing:2px;color:#aab8d4;margin-bottom:4px}
+
+  footer{background:#16274a;color:#aab8d4;font-size:14px;padding:26px 0;text-align:center}
+  footer a{color:#fff;font-weight:600}
+  footer a:hover{text-decoration:underline}
+
+  @media (max-width:760px){
+    .nav{height:56px}
+    .nav nav{display:flex;gap:16px}
+    .nav nav a{margin-left:0;font-size:14px;white-space:nowrap}
+    .brand{font-size:18px}
+    .rooms{grid-template-columns:1fr}
+    .rooms .photo{max-height:300px}
+    .hero{padding:70px 20px 80px}
+    .hero img.logo{width:150px}
+    section{padding:56px 0}
+    .contact .items{gap:24px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top"><span class="rent">RENT</span><span class="ryte">RYTE</span></a>
+    <nav>
+      <a href="#vehicles">Vehicles</a>
+      <a href="#homes">Homes</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero" id="top">
+  <img class="logo" src="assets/logo.png" alt="Rentryte logo" width="190">
+  <h1>Book Your Next Luxury Rental</h1>
+  <p>Vehicles in Greater Los Angeles &amp; LAX · Homes in Dallas–Fort Worth</p>
+  <a class="cta primary" href="#vehicles">Browse Vehicles</a>
+  <a class="cta ghost" href="#homes">Browse Homes</a>
+</div>
+
+<section id="vehicles">
+  <div class="wrap">
+    <span class="kicker">Los Angeles / LAX Fleet</span>
+    <h2>Vehicles</h2>
+    <p class="sub">Clean, well-maintained cars ready for pickup across Greater Los Angeles and LAX. Book instantly through Turo.</p>
+    <div class="grid cars">
+      <div class="card">
+        <div class="ph"><img src="assets/tesla.jpg" alt="White Tesla Model 3"></div>
+        <div class="body">
+          <h3>Tesla Model 3, 2023</h3>
+          <p class="spec">5 Seats · EV</p>
+          <a class="link" href="https://turo.com/us/en/car-rental/united-states/los-angeles-ca/tesla/model-3/1977795" target="_blank" rel="noopener">Book on Turo →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="assets/highlander-white.jpg" alt="White Toyota Highlander Hybrid"></div>
+        <div class="body">
+          <h3>Toyota Highlander Hybrid, 2021</h3>
+          <p class="spec">7 Seats · 36 MPG</p>
+          <a class="link" href="https://turo.com/us/en/suv-rental/united-states/los-angeles-ca/toyota/highlander-hybrid/1655068" target="_blank" rel="noopener">Book on Turo →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="assets/highlander-black.jpg" alt="Black Toyota Highlander Hybrid"></div>
+        <div class="body">
+          <h3>Toyota Highlander Hybrid, 2022</h3>
+          <p class="spec">8 Seats · 36 MPG</p>
+          <a class="link" href="https://turo.com/us/en/suv-rental/united-states/los-angeles-ca/toyota/highlander-hybrid/2793536" target="_blank" rel="noopener">Book on Turo →</a>
+        </div>
+      </div>
+      <div class="card">
+        <div class="ph"><img src="assets/prius.jpg" alt="Red Toyota Prius"></div>
+        <div class="body">
+          <h3>Toyota Prius, 2018</h3>
+          <p class="spec">5 Seats · 58 MPG</p>
+          <a class="link" href="https://turo.com/us/en/car-rental/united-states/los-angeles-ca/toyota/prius/1536834" target="_blank" rel="noopener">Book on Turo →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="homes" class="alt">
+  <div class="wrap">
+    <span class="kicker">Dallas Fort Worth Fleet</span>
+    <h2>Room Rental Services</h2>
+    <p class="sub">Comfortable, affordable rooms in the Dallas–Fort Worth area, minutes from UNT and TWU. Book through Airbnb.</p>
+    <div class="rooms">
+      <div class="photo"><img src="assets/bedroom.jpg" alt="Master bedroom"></div>
+      <div class="roomlist">
+        <div class="room">
+          <div><h3>Master Bedroom, Private Bath</h3><p>Dallas–Fort Worth</p></div>
+          <a class="link" href="https://www.airbnb.com/rooms/51000389" target="_blank" rel="noopener">Book on Airbnb →</a>
+        </div>
+        <div class="room">
+          <div><h3>HB Bedroom</h3><p>Near UNT and TWU</p></div>
+          <a class="link" href="https://www.airbnb.com/rooms/53625229" target="_blank" rel="noopener">Book on Airbnb →</a>
+        </div>
+        <div class="room">
+          <div><h3>ET Bedroom</h3><p>Near UNT and TWU</p></div>
+          <a class="link" href="https://www.airbnb.com/rooms/711761167595417523" target="_blank" rel="noopener">Book on Airbnb →</a>
+        </div>
+        <div class="room">
+          <div><h3>JT Bedroom</h3><p>Near UNT and TWU</p></div>
+          <a class="link" href="https://www.airbnb.com/rooms/821301279106656648" target="_blank" rel="noopener">Book on Airbnb →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="kicker">Happy Customers</span>
+    <h2>What Our Guests Say</h2>
+    <div class="quotes" style="margin-top:36px">
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“Great selection of vehicles. Easy booking process. Will definitely rent again!”</p>
+        <div class="who">Satisfied Customer</div>
+        <div class="where">Los Angeles</div>
+      </div>
+      <div class="quote">
+        <div class="stars">★★★★★</div>
+        <p>“Excellent customer service. Clean and well-maintained cars. Highly recommend this company!”</p>
+        <div class="who">John Smith</div>
+        <div class="where">Miami</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <h2>Contact Us</h2>
+    <div class="items">
+      <div><span class="label">Phone</span><a href="tel:+13106546481">(310) 654-6481</a></div>
+      <div><span class="label">Email</span><a href="mailto:rentrytellc@gmail.com">rentrytellc@gmail.com</a></div>
+      <div><span class="label">Turo Host Profile</span><a href="https://turo.com/us/en/drivers/34834830" target="_blank" rel="noopener">turo.com/drivers/34834830</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">© 2026 RentRyte LLC · Los Angeles, CA · <a href="mailto:rentrytellc@gmail.com">rentrytellc@gmail.com</a></div>
+</footer>
+
+</body>
+</html>
